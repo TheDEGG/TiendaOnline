@@ -29,6 +29,7 @@ namespace TiendaOnline.BL
     public class OrdenDetalle
     {
         public int Id { get; set; }
+
         public int OrdenId { get; set; }
         public Orden Orden { get; set; }
 

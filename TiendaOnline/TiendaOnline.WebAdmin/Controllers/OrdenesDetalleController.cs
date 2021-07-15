@@ -31,8 +31,9 @@ namespace TiendaOnline.WebAdmin.Controllers
         public ActionResult Crear(int id)
         {
             var nuevaOrdenDetalle = new OrdenDetalle();
-            nuevaOrdenDetalle.OrdenId = id;
 
+            nuevaOrdenDetalle.OrdenId = id;
+       
             var productos = _productosBL.ObtenerProductos();
             ViewBag.ProductoId = new SelectList(productos, "Id", "Descripcion");
 

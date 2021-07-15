@@ -1,5 +1,6 @@
 ﻿@model TiendaOnline.BL.Orden
 
+
 @{
     ViewBag.Title = "Orden Detalle";
 }
@@ -30,52 +31,52 @@
         <td>L. @Model.Total</td>
     </tr>
 </table>
+        <p>
+           @Html.ActionLink("Nuevo Producto", "Crear", new { id = Model.Id })
+        </p>
 
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>
+                    Producto
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Total
+                </th>
 
-<p>
-    @Html.ActionLink("Nuevo Producto", "Crear")
-</p>
-<table class="table">
-    <tr>
-        <th></th>
-        <th>
-            Producto
-        </th>
-        <th>
-            Cantidad
-        </th>
-        <th>
-            Precio
-        </th>
-        <th>
-            Total
-        </th>
-        
-    </tr>
+            </tr>
 
-@foreach (var item in Model.ListadeOrdenDetalle) {
-    <tr>
-        <td>
-            <img src="@item.Producto.UrlImagen" alt="@item.Producto.Descripcion " style="max-width: 64px; height: auto;"/>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Producto.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cantidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Precio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total)
-        </td>
-        <td>
-            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.Id })
-        </td>
-    </tr>
-}
+            @foreach (var item in Model.ListadeOrdenDetalle)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.Producto.UrlImagen" alt="@item.Producto.Descripcion " style="max-width: 64px; height: auto;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Producto.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id })
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
 
-@Html.ActionLink("Regresar a Ordenes", "Index","Ordenes")
+        @Html.ActionLink("Regresar a Ordenes", "Index", "Ordenes")
