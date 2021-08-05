@@ -18,6 +18,7 @@ namespace TiendaOnline.BL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            Database.SetInitializer(new DatosdeInicio()); // Agrega los datos de inincio al momento de la creacion de la base de datos
         }
 
         public DbSet<Producto> Productos { get; set; }
