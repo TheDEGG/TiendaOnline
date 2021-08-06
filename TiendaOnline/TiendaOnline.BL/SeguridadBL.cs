@@ -29,6 +29,21 @@ namespace TiendaOnline.BL
 
             return false;
         }
+
+        //public bool Autorizar(string nameUser, string password)
+        //{
+        //    var contrasenaEncriptada = Encriptar.CodificarContrasena(password);
+        //    var user = _contexto.Users
+        //        .FirstOrDefault(r => r.Name == nameUser &&
+        //        r.Password == contrasenaEncriptada);
+
+        //    if (user != null)
+        //    {
+        //        return true;
+        //    }
+
+        //    return false;
+        //}
     }
 
     public static class Encriptar
@@ -49,3 +64,4 @@ namespace TiendaOnline.BL
             return Convert.ToBase64String(bRet);
         }
     }
+}
