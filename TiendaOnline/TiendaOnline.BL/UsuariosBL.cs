@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,14 +45,35 @@ namespace TiendaOnline.BL
             }
             else
             {
+                var contrasenaEncriptada = Encriptar.CodificarContrasena(usuario.Contrasena);
                 var usuarioExistente = _contexto.Usuarios.Find(usuario.Id);
                 usuarioExistente.Nombre = usuario.Nombre;
+                usuarioExistente.Contrasena = contrasenaEncriptada;
                 usuarioExistente.Telefono= usuario.Telefono;
                 usuarioExistente.Direccion = usuario.Direccion ;
                 usuarioExistente.Activo = usuario.Activo;
             }
             _contexto.SaveChanges();
         }
+
+        //public static class Encriptar
+        //{
+        //    public static string CodificarContrasena(string contrasena)
+        //    {
+        //        var salt = "MADs";
+
+        //        byte[] bIn = Encoding.Unicode.GetBytes(contrasena);
+        //        byte[] bSalt = Convert.FromBase64String(salt);
+        //        byte[] bAll = new byte[bSalt.Length + bIn.Length];
+
+        //        Buffer.BlockCopy(bSalt, 0, bAll, 0, bSalt.Length);
+        //        Buffer.BlockCopy(bIn, 0, bAll, bSalt.Length, bIn.Length);
+        //        HashAlgorithm s = HashAlgorithm.Create("SHA512");
+        //        byte[] bRet = s.ComputeHash(bAll);
+
+        //        return Convert.ToBase64String(bRet);
+        //    }
+        //}
 
         public Usuario ObtenerUsuario(int id)
         {
