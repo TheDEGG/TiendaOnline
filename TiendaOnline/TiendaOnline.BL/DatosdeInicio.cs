@@ -16,7 +16,7 @@ namespace TiendaOnline.BL
             nuevoUsuario.Contrasena = Encriptar.CodificarContrasena("123");
             nuevoUsuario.Direccion = "Server";
             nuevoUsuario.Telefono = "00000000";
-            nuevoUsuario.Activo = true;
+
 
             contexto.Usuarios.Add(nuevoUsuario);
 
